@@ -1,16 +1,21 @@
 * {
     margin: 0px;
     padding: 0px;
-    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    text-align: center;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-
+img{
+    width: 100%;
+}
+#cont{
+    width: 100%;
+}
 #nav1 {
     display: flex;
     justify-content: space-around;
     background-color: rgba(172, 231, 255, 0.281);
     padding: 4px 0px 5px 0px;
-    margin-bottom: 45px;
+    /* margin-bottom: 35px; */
 }
 
 #nav1 img {
@@ -39,7 +44,7 @@
     padding: 20px 0px;
 }
 
-#nav1>div:nth-child(3) {
+#icon {
     width: 15%;
     display: flex;
     justify-content: space-between;
@@ -49,7 +54,9 @@
 #icon img {
     width: 40%;
 }
-
+#nav2{
+    margin-top: 35px;
+}
 #nav2>div:nth-child(1) {
     display: flex;
     width: 18%;
@@ -64,8 +71,149 @@
     justify-content: space-around;
     margin-bottom: 20px;
 }
-
+#acc{
+    position: absolute;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 6px;
+    margin-left: 167vh;
+    display: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+#acc h4{
+    transition: 0.3s;
+}
+#acc h4:hover{
+    font-size: medium;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    /* transform: scale(1.1); */
+}
+.sign{
+    padding: 12px 40px;
+    margin: 10px;
+    border-radius: 50px;
+    border: 1px solid black;
+    color: white;
+    font-size: larger;
+    font-weight: bold;
+    /* background-color: #0a5491; */
+    background-color: rgb(3, 88, 3);
+    transition: 0.2s;
+}
+.option{
+    transition: 0.1s;
+    border-bottom: 2px solid white;
+    padding: 0px 3px;
+}
+.option:hover{
+    border-bottom: 2px solid;
+}
 #trend{
     text-align: center;
     background-color: aliceblue;
+}
+
+#trend>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#trend img{
+    width: 2.6%;
+}
+
+#slider img{
+    width: 100%;
+}
+
+#abvsli{
+    position: absolute;
+    margin-top: 15%;
+    margin-left: 22%;
+}
+#abvsli>button , .detail, .learn, #addphoto, .gallery{
+    padding: 12px 40px;
+    margin: 30px;
+    border-radius: 50px;
+    border: 1px solid black;
+    color: white;
+    font-size: larger;
+    font-weight: bold;
+    /* background-color: #0a5491; */
+    background-color: rgb(3, 88, 3);
+    transition: 0.2s;
+}
+#abvsli>button:hover , .detail:hover , .learn:hover, .shop:hover, #addphoto:hover, .gallery:hover, .sign:hover{
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.detail{
+    position: absolute;
+    margin-left: 70%;
+    margin-top: 50%;
+}
+#bottom{
+    width: 95%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3%;
+}
+#bottom>div{
+    border-radius: 10px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.623);
+    transition: 0.3s;
+}
+#bottom>div:hover{
+    transform: scale(1.1);
+}
+#bottom>div:hover .shop{
+    display: block;
+}
+
+#bottom p{
+    font-size: small;
+}
+.rs{
+    color: rgb(199, 0, 0);
+    font-size: medium;
+    margin-bottom: 20px;
+}
+#reward{
+    position: absolute;
+    margin-top: 15%;
+    margin-left: 23%;
+}
+.shop{
+    display: none;
+    position: absolute;
+    padding: 2px 30px;
+    border-radius: 50px;
+    border: 1px solid black;
+    margin-top: 38vh;
+    margin-left: 6.5vh;
+    transition: 0.1s;
+}
+
+#footer{
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 20px;
+}
+#footer p{
+    text-align: left;
+}
+#footer>div:nth-child(1){
+    width: 30%;
+}
+.fhead{
+    font-size: small;
+    font-weight: bold;
+    border-bottom: 2px solid white;
+}
+.fhead:hover{
+   text-decoration: underline;
+}
+.fpara{
+    font-size: smaller;
 }
