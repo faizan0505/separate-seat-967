@@ -1,13 +1,14 @@
 const mongoose = require("mongoose")
 
 const proSchema = mongoose.Schema({
-    title:String,
-    image:String,
-    price:String
-},{
-    versionKey : false
+    image: String,
+    title: String,
+    category: String,
+    price: Number
+}, {
+    versionKey: false
 })
 
-const proModel = mongoose.model("product",proSchema)
+const proModel = mongoose.model("product", proSchema)
 
-module.exports = {proModel}
+module.exports = { proModel }

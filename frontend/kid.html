@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Display Data</title>
+    <title>Kid Section</title>
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
     <div id="nav1">
         <div>
@@ -56,16 +58,16 @@
         </div>
         <div>
             <div class="option">
-                <h4>All</h4>
+                <a href="all.html"><h4>All</h4></a>
             </div>
             <div class="option">
-                <h4>Men</h4>
+                <a href="men.html"><h4>Men</h4></a>
             </div>
             <div class="option">
-                <h4>Women</h4>
+                <a href="women.html"><h4>Women</h4></a>
             </div>
             <div class="option">
-                <h4>Kids</h4>
+                <a href="kid.html"><h4>Kids</h4></a>
             </div>
             <div class="option">
                 <h4>Seasonal</h4>
@@ -75,56 +77,85 @@
             </div>
         </div>
     </div>
-<hr>
+    <hr>
+    <br>
+    <br>
 
 
 
-<div id="main">
-    <div>
-        <h2><u>More Filters</u></h2>
-        <br>
-        <h4>All data</h4>
-        <br>
-        <h4>Mens</h4>
-        <br>
-        <h4>Women</h4>
-        <br>
-        <h4>Kids</h4>
-        <br>
-        <hr>
-        <div id="filter">
-            <h2>Filters</h2>
-            <h4>By Sub-Category</h4>
+    <div class="main">
+        <div>
+            <h2>Search</h2>
+            <br>
+            <input class="search" type="text" placeholder="Serach By Type">
+            <br>
+            <br>
+            <hr>
+            <br>
+
+            <div>
+                <h2>Sort By Price</h2>
+                <br>
+                <select name="" id="sorting" class="prisort">
+                    <option value="">Sort by Price</option>
+                    <option value="asc">Low to High</option>
+                    <option value="dsc">High to Low</option>
+                </select>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div>
+                <h2>Filter By Category</h2>
+                <br>
+                <select name="" id="subcate" class="catfilter">
+                    <option value="">ALL</option>
+                    <option value="top">Top</option>
+                    <option value="shirt">Shirt</option>
+                    <option value="jean">Jeans</option>
+                    <option value="jacket">Jackets</option>
+                    <option value="hoo">Hoodies</option>
+                    <option value="mini">Mini dress</option>
+                </select>
+            </div>
+            <br>
+            <hr>
+
+            <div id="filter">
+                <h2><u>More Filters</u></h2>
+                <br>
+                <h4>By Sub-Category</h4>
                 <input type="checkbox">
-                <label>T-Shirt</label>
+                <label>Trends</label>
                 <br>
                 <input type="checkbox">
-                <label>Shirt</label>
+                <label>Best Selling</label>
                 <br>
                 <input type="checkbox">
-                <label>Top</label>
+                <label>Popular</label>
                 <br>
                 <input type="checkbox">
-                <label>Jeans</label>
+                <label>Brands</label>
                 <br>
                 <input type="checkbox">
-                <label>Under Garments</label>
+                <label>High Rting</label>
+            </div>
+            <br>
+            <hr>
+            <div id="guest-rating">
+                <h4>Sizes</h4>
+                <input type="radio"><label>XS</label><br>
+                <input type="radio"><label>S</label><br>
+                <input type="radio"><label>M</label><br>
+                <input type="radio"><label>L</label><br>
+                <input type="radio"><label>XL</label><br>
+                <input type="radio"><label>XXL</label>
+            </div>
         </div>
-        <hr>
-        <div id="guest-rating">
-            <h4>Sizes</h4>
-            <input type="radio"><label>XS</label><br>
-            <input type="radio"><label>S</label><br>
-            <input type="radio"><label>M</label><br>
-            <input type="radio"><label>L</label>
-            <input type="radio"><label>XL</label>
-            <input type="radio"><label>XXL</label>
+        <div id="all_container">
+
         </div>
     </div>
-    <div>
-        
-    </div>
-</div>
 
 
 
@@ -133,9 +164,8 @@
 
 
 
-
-<br>
-<hr>
+    <br>
+    <hr>
     <div id="footer">
         <div>
             <p class="fhead">Gift Cards</p>
@@ -189,4 +219,7 @@
         </div>
     </div>
 </body>
+
 </html>
+
+<script src="kid.js"></script>

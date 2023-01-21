@@ -4,113 +4,56 @@ const { proModel } = require("../models/pro_model.js");
 
 // -----------------------------------------------------------------------------------
 
+const app = express()
+app.use(express.json())
+const proRouter = express.Router()
 
-function post() {
-    const title = document.querySelector("#title").value;
-    const body = document.querySelector("#body").value;
-    const device = document.querySelector("#device").value;
-
-    const payload = {
-        title,
-        body,
-        device
+proRouter.get("/all", async (req, res) => {
+    let query = req.query;
+    try {
+        const allpro = await proModel.find(query)
+        res.send(allpro)
+    } catch (error) {
+        console.log(error)
+        res.send(error)
     }
+})
 
-    fetch("https://unusual-pike-parka.cyclic.app/posts/addpost", {
-        method: "POST",
-        headers: {
-            "Content-type": "application/json",
-            "Authorization": sessionStorage.getItem("token")
-        },
-        body: JSON.stringify(payload)
-    })
-        .then(result => {
-            result.json()
-            if (result.ok) { alert("Media has been posted") }
-        })
-        .then(data => {
-        })
-        .catch(err => {
-            console.log(err);
-        })
-
-    display();
-}
-
-const display = async () => {
-
-    fetch("https://unusual-pike-parka.cyclic.app/posts/", {
-        headers: {
-            "Authorization": sessionStorage.getItem("token")
-        }
-    }).then(result => result.json()).then(data => {
-        output(data);
-    })
-        .catch(err => {
-            console.log(err);
-        })
-
-}
-
-function output(data) {
-    document.querySelector("#cont").innerHTML = "";
-
-    if (data.length != 0) {
-
-        data.forEach(element => {
-
-            let div = document.createElement("div");
-
-            let title = document.createElement("h3");
-            title.innerText = `Title : ${element.title}`
-
-            let body = document.createElement("p");
-            body.innerText = `Notes : ${element.body}`;
-
-            let device = document.createElement("p");
-            device.innerText = `Category : ${element.device}`;
-
-            let edit = document.createElement("button");
-            edit.innerText = `Edit`;
-            edit.addEventListener("click", () => {
-                update(element._id);
-            })
-
-            let btn = document.createElement("button");
-            btn.innerText = `Delete`;
-
-            btn.addEventListener("click", () => {
-                deleting(element._id);
-            });
-
-            div.append(title,body,device, edit, btn);
-
-            document.querySelector("#cont").append(div);
-
-        });
-
-    } else {
-        document.querySelector("#cont").innerHTML = `<h2>No any Social Medial Appended, Please Append.</h2>`
+proRouter.post("/add", async (req, res) => {
+    const payload = req.body;
+    try {
+        const data = await new proModel(payload)
+        await data.save()
+        res.send(data)
+    } catch (error) {
+        console.log(error)
+        res.send(error)
     }
-}
+})
+
+proRouter.patch("/edit/:id", async (req, res) => {
+    const ID = req.params.id;
+    const payload = req.body;
+    try {
+        await proModel.findByIdAndUpdate({ "_id": ID }, payload)
+        res.send("Updated")
+    } catch (error) {
+        console.log(error)
+        res.send(error)
+    }
+})
+
+proRouter.delete("/delete/:id", async (req, res) => {
+    const ID = req.params.id;
+    try {
+        await proModel.findByIdAndDelete({ "_id": ID })
+        res.send("Deleted")
+    } catch (error) {
+        console.log(error)
+        res.send(error)
+    }
+})
 
 
-const deleting = async (id) => {
 
-    await fetch(`https://unusual-pike-parka.cyclic.app/posts/delete${id}`, {
-        method: "DELETE",
-        headers: {
-            "Authorization": sessionStorage.getItem("token")
-        }
-    }).then(result => {
-        result.json();
-        if (result.ok) {
-            console.log();
-            alert("Note has beem deleted")
-        }
-    }).catch(err => {
-        console.log(err);
-    })
-    show();
-}
-
+module.exports = { proRouter }
