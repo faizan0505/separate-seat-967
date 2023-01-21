@@ -27,7 +27,7 @@ let register = async () => {
         password
     }
 
-    await fetch("https://localhost:4300/user/signup", {
+    await fetch("http://localhost:4300/user/signup", {
         method: 'POST',
         headers: {
             "Content-type": "application/json"
@@ -58,7 +58,7 @@ const payload = {
     password
 }
 
-const fetchedData = await fetch("https://localhost:4300/user/login", {
+const fetchedData = await fetch("http://localhost:4300/user/login", {
     method: "POST",
     headers: {
         "Content-type": "application/json"
