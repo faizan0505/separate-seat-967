@@ -1,11 +1,29 @@
+let account = document.querySelector("#account")
+let ss = 1;
+account.addEventListener("click", () => {
+    if (ss == 1) {
+        ss = 0;
+        document.querySelector("#acc").style.display = "block"
+    } else {
+        ss = 1;
+        document.querySelector("#acc").style.display = "none"
+    }
+})
+
+let user_name = JSON.parse(sessionStorage.getItem("name"))
+
+document.querySelector("#username").innerText = user_name || "Welcome";
+// -----------------------------------------------------------------------
+
+
 let showdata = JSON.parse(localStorage.getItem("detaildata"));
 
 // console.log(showdata)
 
-function detailrender(data){
-return document.querySelector("#detail").innerHTML =
+function detailrender(data) {
+    return document.querySelector("#detail").innerHTML =
 
-`
+        `
 <div>
 <img src=${data.image} alt="">
 </div>
@@ -41,10 +59,46 @@ return document.querySelector("#detail").innerHTML =
 <br>
 <img src="images/detail_color.JPG" alt="">
 <br>
-<button id="add_bag">Add To Bag</button>
+<button onclick="add_to_bag(showdata)"  id="add_bag">Add To Bag</button>
 </div>
 `
 
 }
 
 detailrender(showdata)
+
+
+function add_to_bag(data) {
+    const image = data.image;
+    const title = data.title;
+    const category = data.category
+    const price = data.price;
+
+    const payload = {
+        image,
+        title,
+        category,
+        price
+    }
+
+    fetch("https://tame-rose-lion-coat.cyclic.app/cart/addcart", {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json",
+            "Authorization": sessionStorage.getItem("token")
+        },
+        body: JSON.stringify(payload)
+    })
+        .then(result => {
+            result.json()
+            if (result.ok) {
+                alert("Product Added to the Bag")
+                window.location.href = "all.html"
+            }
+        })
+        .then(data => {
+        })
+        .catch(err => {
+            console.log(err);
+        })
+}

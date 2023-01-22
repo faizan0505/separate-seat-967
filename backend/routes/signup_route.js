@@ -34,6 +34,8 @@ userRouter.post("/login", async (req, res) => {
                     const token = jwt.sign({ userID: user[0]._id }, "masai");
                     res.send({
                         "msg": "login Sucessfull",
+                        "user": user[0]._id,
+                        "name": user[0].name,
                         "token": token
                     })
                 } else {
