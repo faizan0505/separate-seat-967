@@ -1,9 +1,10 @@
 const mongoose = require("mongoose")
 
 const cartSchema = mongoose.Schema({
-    title: String,
     image: String,
-    price: String,
+    title: String,
+    category: String,
+    price: Number,
     userID: String
 }, {
     versionKey: false

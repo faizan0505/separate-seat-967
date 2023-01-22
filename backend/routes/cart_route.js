@@ -1,5 +1,5 @@
 const express = require("express");
-const { cartModel } = require("../models/pro_model.js");
+const { cartModel } = require("../models/cart_model.js");
 
 const app = express()
 app.use(express.json())
